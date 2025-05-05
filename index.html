@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tori Skin – Full Page</title>
+  <title>Tori Skin</title>
 
   <!-- Bootstrap CSS -->
   <link
@@ -20,6 +20,10 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     rel="stylesheet"
   />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <link href="assets/css/style.css" rel="stylesheet"/>
 </head>
 
@@ -28,7 +32,7 @@
   <section class="hero-bg">
     <!-- NAV (transparent, over the background) -->
     <nav>
-      <div class="container d-flex align-items-center">
+      <div class="container d-flex align-items-center animate__animated animate__slow animate__backInRight">
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link active" href="#">Home</a>
@@ -43,7 +47,7 @@
             <a class="nav-link" href="#">Contact us</a>
           </li>
           <li class="nav-item">
-            <button id="cart-button" class="shopee-btn position-relative" aria-label="View Cart">
+            <button id="cart-button" class="shopee-btn position-relative animate__animated animate__swing animate__infinite	animate__delay-2s" aria-label="View Cart">
               <i class="fas fa-shopping-cart"></i>
               <span id="cart-count"
                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -61,16 +65,22 @@
     <div class="hero-content">
       <div class="container">
         <div class="row g-0">
-          <div class="col-md-6 hero-text">
-            <h1 class="hero-title">Your Skin Matters</h1>
-            <p class="subheading">Formulated for perfection.</p>
-            <p class="subheading-2">Your skin’s partner for a better you.</p>
-            <h2 class="brand-name">Tori Skin</h2>
+          <div class="col-md-6 hero-text d-flex flex-column justify-content-between">
+            <div class="animate__animated animate__fadeInLeft animate__slow">
+              <h1 class="hero-title">Your Skin Matters</h1>
+              <p class="subheading">Formulated for perfection.</p>
+              <p class="subheading-2">Your skin’s partner for a better you.</p>
+            </div>
+            <div>
+              <img src="assets/img/Tori Skin.png" alt="Tori Skin Logo" class="brand-logo animate__animated animate__zoomInDown animate__slow">
+            </div>
           </div>
           <div class="col-md-6"><!-- empty so background shows --></div>
         </div>
       </div>
     </div>
+    
+    
   </section>
 
    <!-- ==== PRODUCTS SECTION ==== -->
@@ -505,7 +515,9 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-md-3">
-          <div class="footer-logo">Tori Skin</div>
+          <div class="footer-logo">
+            <img src="assets/img/Tori Skin-white.png" alt="Tori Skin Logo" class="footer-logo-img" style="max-width: 280px; height: auto; display: block; margin-bottom: 1rem;">
+          </div>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
