@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tori Skin Products</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Font Awesome (kept for future use) -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* General styling */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+    section.products {
+      background: #f8f9fa;
+      padding: 4rem 1rem;
+    }
+    section.products h2 {
+      font-family: serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Nav underline */
+    #product-tabs {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      list-style: none;
+      padding: 0;
+      font-weight: 500;
+    }
+    #product-tabs .nav-link {
+      color: #6b7280;
+      text-decoration: none;
+      padding-bottom: 0.5rem;
+      cursor: pointer;
+    }
+    #product-tabs .nav-link.active {
+      color: #111827;
+    }
+    #product-tabs #underline {
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      background: #21b6f5;
+      transition: left 0.3s cubic-bezier(0.23,1,0.32,1),
+                  width 0.3s cubic-bezier(0.23,1,0.32,1);
+    }
+
+    /* Fade helpers */
+    .products-grid {
+      transition: opacity 0.3s ease;
+    }
+    .products-grid.d-none {
+      display: none;
+      opacity: 0;
+    }
+
+    /* Product Card Styling */
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      background-color: #f1f1f1;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 640px;
+      display: flex;
+      align-items: flex-end;
+      cursor: pointer; /* make it clear it's clickable */
+    }
+    .product-card .info-panel {
+      position: relative;
+      width: 100%;
+      margin: -50px 0 0 0;
+      background-color: #fff;
+      padding: 1.5rem;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+      border-bottom-left-radius: 0.75rem;
+      border-bottom-right-radius: 0.75rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    
+    .product-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    .product-description {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product-price {
+      font-weight: 700;
+      color: #111827;
+    }
+    .shopee-btn {
+      background-color: #fff;
+      border: none;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    .shopee-btn:hover {
+      background-color: #f3f4f6;
+    }
+    .shopee-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+<section class="products">
+  <div class="container">
+    <h2>— PRODUCTS —</h2>
+
+    <!-- Tab Navigation -->
+    <ul id="product-tabs">
+      <li><a class="nav-link" data-target="brightening">Brightening</a></li>
+      <li><a class="nav-link active" data-target="anti-acne">Anti-Acne</a></li>
+      <li><a class="nav-link" data-target="anti-aging">Anti-Aging</a></li>
+      <div id="underline"></div>
+    </ul>
+
+    <!-- Brightening Grid -->
+    <div id="brightening" class="row products-grid d-none g-4">
+      <!-- 6 brightening cards here (same pattern as anti-acne) -->
+      <!-- … -->
+       <!-- Brightening Grid -->
+    <div id="brightening" class="row products-grid d-none g-4">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 2-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Brightening Serum</h3>
+            <p class="product-description">
+              A product formulated to brighten and even out skin tone.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱800</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 2-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Brightening Wash Foam</h3>
+            <p class="product-description">
+              A gentle cleanser to remove impurities and boost radiance.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱1,000</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 2-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Brightening Toner</h3>
+            <p class="product-description">
+              A refreshing toner to prep skin and enhance glow.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱650</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 2-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Brightening Cream</h3>
+            <p class="product-description">
+              A rich cream to lock in moisture and luminosity.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱500</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 2-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Brightening Essence</h3>
+            <p class="product-description">
+              A potent essence that targets dark spots and dullness.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱800</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 2-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Brightening Mask</h3>
+            <p class="product-description">
+              An overnight mask to deeply nourish and brighten skin.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱1,000</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Anti-Acne Grid -->
+    <div id="anti-acne" class="row products-grid g-4">
+      <!-- Anti-Acne Grid -->
+    <div id="anti-acne" class="row products-grid g-4">
+      <!-- existing anti-acne cards -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 1-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Acne Serum</h3>
+            <p class="product-description">
+              A product formulated to give you clearer skin and prevent breakouts.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱800</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 1-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Acne Wash Foam</h3>
+            <p class="product-description">
+              A product formulated to give you clearer skin and prevent breakouts.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱1,000</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 1-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Acne Toner</h3>
+            <p class="product-description">
+              A product formulated to give you clearer skin and prevent breakouts.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱650</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 1-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Acne Cream</h3>
+            <p class="product-description">
+              A product formulated to give you clearer skin and prevent breakouts.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱500</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 1-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Acne Serum</h3>
+            <p class="product-description">
+              A product formulated to give you clearer skin and prevent breakouts.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱800</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 1-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Acne Wash Foam</h3>
+            <p class="product-description">
+              A product formulated to give you clearer skin and prevent breakouts.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱1,000</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Anti-Aging Grid -->
+    <div id="anti-aging" class="row products-grid d-none g-4">
+      <!-- Anti-Aging Grid -->
+    <div id="anti-aging" class="row products-grid d-none g-4">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 3-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Aging Serum</h3>
+            <p class="product-description">
+              A powerful serum that firms and smooths fine lines.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱900</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 3-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Aging Wash Foam</h3>
+            <p class="product-description">
+              A gentle foam cleanser to prep mature skin.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱1,200</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 3-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Aging Toner</h3>
+            <p class="product-description">
+              A hydrating toner to support skin elasticity.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱850</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 3-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Aging Cream</h3>
+            <p class="product-description">
+              A rich cream to nourish and firm skin overnight.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱1,100</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 3-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Aging Eye Cream</h3>
+            <p class="product-description">
+              A targeted eye cream to reduce crow’s feet.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱750</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="col-md-4">
+        <div class="product-card" style="background-image:url('assets/img/Product\ 3-min.jpg')">
+          <div class="info-panel">
+            <h3 class="product-name">Anti-Aging Night Cream</h3>
+            <p class="product-description">
+              An overnight repair cream that renews while you sleep.
+            </p>
+            <div class="product-footer">
+              <div class="product-price">₱1,300</div>
+              <button class="shopee-btn">
+                <img src="/assets/img/Shopee Logo-min.png" alt="Shopee" class="shopee-icon"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fullscreen Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+        <img src="" id="modalImage" class="img-fluid" alt="Product full view">
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+        data-bs-dismiss="modal"
+        aria-label="Close">
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS + Tabs/underline + Modal logic -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // tab underline and switching
+    const tabs = document.querySelectorAll('#product-tabs .nav-link');
+    const underline = document.getElementById('underline');
+    const grids = document.querySelectorAll('.products-grid');
+    function updateUnderline() {
+      const active = document.querySelector('#product-tabs .nav-link.active');
+      underline.style.left = active.offsetLeft + 'px';
+      underline.style.width = active.offsetWidth + 'px';
+    }
+    updateUnderline();
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        if (tab.classList.contains('active')) return;
+        document.querySelector('#product-tabs .nav-link.active')
+          .classList.remove('active');
+        tab.classList.add('active');
+        updateUnderline();
+        const tgt = tab.dataset.target;
+        grids.forEach(g => {
+          g.id === tgt
+            ? g.classList.remove('d-none')
+            : g.classList.add('d-none');
+        });
+      });
+    });
+
+    // modal logic
+    const modalEl = document.getElementById('productModal');
+    const modalImg = document.getElementById('modalImage');
+    const bsModal = new bootstrap.Modal(modalEl);
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const bg = card.style.backgroundImage;
+        const match = bg.match(/url\(["']?(.*?)["']?\)/);
+        if (match) {
+          modalImg.src = match[1];
+          bsModal.show();
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
