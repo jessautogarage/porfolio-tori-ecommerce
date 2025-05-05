@@ -397,3 +397,88 @@
   height: 2.25rem;
   object-fit: contain;
 }
+
+
+/* ==== TABLET (≤992px) ==== */
+@media (max-width: 992px) {
+  /* NAV: center links, shrink gaps */
+  .hero-bg .nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+  /* HERO text: narrower max-width */
+  .hero-content {
+    padding: 3rem 1rem;
+  }
+  /* PRODUCTS: 2-column grid */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* INFO sections: stack vertically */
+  .info-section .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .info-section .text-block {
+    padding: 2rem 1rem;
+  }
+  /* KNOW MORE cards: 2-column */
+  .know-more-cards .row,
+  .know-more-cards > .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  /* FOOTER columns: wrap to two per row */
+  footer .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  footer .col-6,
+  footer .col-12 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ==== MOBILE (≤576px) ==== */
+@media (max-width: 576px) {
+  /* NAV: hamburger only (if you have one), else wrap items */
+  .hero-bg .nav {
+    flex-direction: column;
+    text-align: center;
+  }
+  /* HERO title & text smaller */
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  .subheading,
+  .subheading-2 {
+    font-size: 1rem !important;
+  }
+  .brand-name {
+    font-size: 1.75rem !important;
+  }
+  /* PRODUCTS: 1-column cards */
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  /* INFO sections: single column */
+  .info-section .row {
+    flex-direction: column;
+  }
+  /* KNOW MORE cards: 1-column */
+  .know-more-cards .row {
+    grid-template-columns: 1fr;
+  }
+  /* FOOTER: full-width stacks */
+  footer .col-6,
+  footer .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  footer {
+    text-align: center;
+  }
+}
