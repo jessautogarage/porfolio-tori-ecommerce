@@ -1,44 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Tabs & underline
-  const tabs      = document.querySelectorAll('#product-tabs .nav-link');
-  const underline = document.getElementById('underline');
-  const grids     = document.querySelectorAll('.products-grid');
-  function updateUnderline() {
-    const a = document.querySelector('#product-tabs .nav-link.active');
-    underline.style.left  = a.offsetLeft + 'px';
-    underline.style.width = a.offsetWidth + 'px';
-  }
-  updateUnderline();
-  tabs.forEach(t => t.addEventListener('click', e => {
-    e.preventDefault();
-    if (t.classList.contains('active')) return;
-    document.querySelector('.nav-link.active').classList.remove('active');
-    t.classList.add('active');
-    updateUnderline();
-    grids.forEach(g => g.id === t.dataset.target
-      ? g.classList.remove('d-none')
-      : g.classList.add('d-none')
-    );
-  }));
+  const tabs       = document.querySelectorAll('#product-tabs .nav-link');
+  const underline  = document.getElementById('underline');
+  const grids      = document.querySelectorAll('.products-grid');
 
-  // Modal logic
+  function activate(tab) {
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    grids.forEach(g =>
+      g.id === tab.dataset.target
+        ? g.classList.remove('d-none')
+        : g.classList.add('d-none')
+    );
+    updateUnderline();
+  }
+
+  function updateUnderline() {
+    const active = document.querySelector('#product-tabs .nav-link.active');
+    underline.style.left  = active.offsetLeft + 'px';
+    underline.style.width = active.offsetWidth + 'px';
+  }
+
+  // Wire up the tabs
+  tabs.forEach(tab => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+      if (!tab.classList.contains('active')) activate(tab);
+    });
+  });
+
+  // Initial tab
+  const start = document.querySelector('#product-tabs .nav-link.active') || tabs[0];
+  activate(start);
+
+  // ——— Modal logic ———
   const modalEl  = document.getElementById('productModal');
   const modalImg = document.getElementById('modalImage');
   const bsModal  = new bootstrap.Modal(modalEl);
 
-  // Prevent modal when clicking add-to-cart
-  document.querySelectorAll('.shopee-btn').forEach(btn =>
-    btn.addEventListener('click', e => e.stopPropagation())
-  );
+  // ——— Add-to-cart logic ———
+  document.querySelectorAll('.product-card .shopee-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const badge = document.getElementById('cart-count');
+      const current = parseInt(badge.textContent, 10) || 0;
+      badge.textContent = current + 1;
+    });
+  });
 
-  // Open modal on card click
+  // ——— Open modal on card click ———
   document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', () => {
-      const bg = card.style.backgroundImage;
-      const urlMatch = bg.match(/url\(["']?(.*?)["']?\)/);
-      if (!urlMatch) return;
-      modalImg.src = urlMatch[1];
-      bsModal.show();
+      // grab computed background-image (works whether in CSS or inline)
+      const bg = window.getComputedStyle(card).backgroundImage;
+      const match = bg.match(/url\(["']?(.*?)["']?\)/);
+      if (match) {
+        modalImg.src = match[1];
+        bsModal.show();
+      }
     });
   });
 });
