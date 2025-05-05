@@ -1,43 +1,44 @@
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabsEl = document.getElementById('product-tabs');
-      const underline = document.getElementById('underline');
-      const links = tabsEl.querySelectorAll('.nav-link');
-      const grids = document.querySelectorAll('.products-grid');
+document.addEventListener('DOMContentLoaded', () => {
+  // Tabs & underline
+  const tabs      = document.querySelectorAll('#product-tabs .nav-link');
+  const underline = document.getElementById('underline');
+  const grids     = document.querySelectorAll('.products-grid');
+  function updateUnderline() {
+    const a = document.querySelector('#product-tabs .nav-link.active');
+    underline.style.left  = a.offsetLeft + 'px';
+    underline.style.width = a.offsetWidth + 'px';
+  }
+  updateUnderline();
+  tabs.forEach(t => t.addEventListener('click', e => {
+    e.preventDefault();
+    if (t.classList.contains('active')) return;
+    document.querySelector('.nav-link.active').classList.remove('active');
+    t.classList.add('active');
+    updateUnderline();
+    grids.forEach(g => g.id === t.dataset.target
+      ? g.classList.remove('d-none')
+      : g.classList.add('d-none')
+    );
+  }));
 
-      function updateUnderline() {
-        const active = tabsEl.querySelector('.nav-link.active');
-        underline.style.left  = active.offsetLeft + 'px';
-        underline.style.width = active.offsetWidth + 'px';
-      }
+  // Modal logic
+  const modalEl  = document.getElementById('productModal');
+  const modalImg = document.getElementById('modalImage');
+  const bsModal  = new bootstrap.Modal(modalEl);
 
-      function fadeOut(el, d=300) {
-        el.style.transition = `opacity ${d}ms ease, transform ${d}ms ease`;
-        el.style.opacity   = 0;
-        el.style.transform = 'translateY(-10px)';
-        setTimeout(()=> el.classList.add('d-none'), d);
-      }
-      function fadeIn(el, d=300) {
-        el.classList.remove('d-none');
-        el.style.opacity   = 0;
-        el.style.transform = 'translateY(10px)';
-        requestAnimationFrame(()=>{
-          el.style.transition = `opacity ${d}ms ease, transform ${d}ms ease`;
-          el.style.opacity   = 1;
-          el.style.transform = 'translateY(0)';
-        });
-      }
+  // Prevent modal when clicking add-to-cart
+  document.querySelectorAll('.shopee-btn').forEach(btn =>
+    btn.addEventListener('click', e => e.stopPropagation())
+  );
 
-      links.forEach(link=>{
-        link.addEventListener('click', e=>{
-          e.preventDefault();
-          if(link.classList.contains('active')) return;
-          tabsEl.querySelector('.nav-link.active').classList.remove('active');
-          link.classList.add('active');
-          updateUnderline();
-          const tgt = link.dataset.target;
-          grids.forEach(g=> g.id===tgt ? fadeIn(g) : fadeOut(g));
-        });
-      });
-
-      updateUnderline();
+  // Open modal on card click
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const bg = card.style.backgroundImage;
+      const urlMatch = bg.match(/url\(["']?(.*?)["']?\)/);
+      if (!urlMatch) return;
+      modalImg.src = urlMatch[1];
+      bsModal.show();
     });
+  });
+});
