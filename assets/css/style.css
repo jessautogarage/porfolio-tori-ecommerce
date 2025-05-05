@@ -448,55 +448,20 @@
   }
 }
 
-/* ==== MOBILE (≤576px) ==== */
+
 @media (max-width: 576px) {
+  /* ---- HERO WRAPPER ---- */
   .hero-bg {
-    /* make the hero even more compact on phones */
-    min-height: 60vh;
-    /* shift focal point slightly to bring your face/subject higher */
-    background-position: center 25%;
+    min-height: 60vh;                     /* compact on phones */
+    background-position: center 25%;      /* shift focal point up */
   }
-  .hero-bg .nav {
-    flex-direction: column;
-    text-align: center;
-  }
-  /* HERO title & text smaller */
-  .hero-title {
-    font-size: 2rem !important;
-  }
-  .subheading,
-  .subheading-2 {
-    font-size: 1rem !important;
-  }
-  .brand-name {
-    font-size: 1.75rem !important;
-  }
-  /* PRODUCTS: 1-column cards */
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-  /* INFO sections: single column */
-  .info-section .row {
-    flex-direction: column;
-  }
-  /* KNOW MORE cards: 1-column */
-  .know-more-cards .row {
-    grid-template-columns: 1fr;
-  }
-  /* FOOTER: full-width stacks */
-  footer .col-6,
-  footer .col-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  footer {
-    text-align: center;
-  }
+
+  /* ---- NAVBAR & HAMBURGER ---- */
   .hero-bg nav {
     position: relative;
-    padding: clamp(0.5rem, 2vw, 1rem) 1rem;
+    padding: clamp(0.5rem, 4vw, 1rem);
   }
-  /* hide the list */
+  /* hide full list by default */
   .hero-bg nav .nav {
     display: none;
     flex-direction: column;
@@ -508,23 +473,118 @@
     width: 100%;
     padding: 1rem 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 10;
   }
-  /* show when nav has .open */
+  /* reveal when toggled open */
   .hero-bg nav.open .nav {
     display: flex;
   }
-  /* inject hamburger icon */
+  /* inject hamburger / close icon at top-left */
   .hero-bg nav::before {
-    content: "\2630";               /* Unicode hamburger */
-    font-size: 1.75rem;
-    color: var(--color-text);
+    content: "\2630";       /* ☰ */
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: clamp(0.75rem, 4vw, 1rem);
+    left: clamp(0.75rem, 4vw, 1rem);
+    font-size: clamp(1.5rem, 6vw, 1.75rem);
+    color: var(--color-text);
     cursor: pointer;
+    z-index: 20;
   }
-  /* shift cart-button into menu */
   .hero-bg nav.open::before {
-    content: "\2715";               /* Unicode “X” when open */
+    content: "\2715";       /* ✕ */
   }
+
+  /* ---- HERO TEXT ---- */
+  .hero-content {
+    min-height: 60vh;
+    padding: clamp(2rem, 8vw, 4rem) 1rem;
+    text-align: center;
+  }
+  .hero-text {
+    padding: 0 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.1;
+  }
+  .subheading,
+  .subheading-2 {
+    font-size: clamp(0.875rem, 5vw, 1rem);
+  }
+  .brand-name {
+    font-size: clamp(1.25rem, 6vw, 1.75rem);
+  }
+
+  /* ---- PRODUCTS GRID ---- */
+  .products-grid {
+    grid-template-columns: 1fr;   /* single column */
+  }
+
+  /* ---- INFO SECTIONS ---- */
+  .info-section .row {
+    display: flex;
+    flex-direction: column;       /* stack columns */
+  }
+
+  /* ---- KNOW MORE CARDS ---- */
+  .know-more-cards > .container .row {
+    display: grid;
+    grid-template-columns: 1fr;   /* single column */
+    gap: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  /* ---- FOOTER STACK ---- */
+  footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: clamp(1rem, 4vw, 1.5rem);
+  }
+  footer .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+
+  .know-more-heading {
+    padding: 4rem 0 10rem; /* Reduce bottom padding for better image overlap */
+    height: auto;
+  }
+
+  .know-more-cards {
+    margin-top: -120px; /* Smaller negative margin to preserve the overlap */
+    padding-top: 0;
+    background: #fff;
+  }
+
+  .know-more-cards .card-img-top {
+    margin: -4rem auto 1rem; /* Adjust so image floats up into black area */
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    width: 90%;
+  }
+
+  .know-more-cards .card-body {
+    background: #fff;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .know-more-cards .card-title {
+    font-size: 1.1rem;
+    color: #111;
+  }
+
+  .know-more-cards .card-link {
+    font-size: 0.9rem;
+    color: #007bff;
+  }
+
+  
+  
 }
+
