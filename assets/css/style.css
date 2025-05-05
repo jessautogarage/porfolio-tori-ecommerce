@@ -492,4 +492,39 @@
   footer {
     text-align: center;
   }
+  .hero-bg nav {
+    position: relative;
+    padding: clamp(0.5rem, 2vw, 1rem) 1rem;
+  }
+  /* hide the list */
+  .hero-bg nav .nav {
+    display: none;
+    flex-direction: column;
+    gap: clamp(0.75rem, 4vw, 1.25rem);
+    background: rgba(255,255,255,0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  /* show when nav has .open */
+  .hero-bg nav.open .nav {
+    display: flex;
+  }
+  /* inject hamburger icon */
+  .hero-bg nav::before {
+    content: "\2630";               /* Unicode hamburger */
+    font-size: 1.75rem;
+    color: var(--color-text);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+  /* shift cart-button into menu */
+  .hero-bg nav.open::before {
+    content: "\2715";               /* Unicode “X” when open */
+  }
 }

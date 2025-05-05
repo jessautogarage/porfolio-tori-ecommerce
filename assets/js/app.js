@@ -58,4 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  const nav = document.querySelector('.hero-bg nav');
+  nav.addEventListener('click', e => {
+    // clicking the pseudo-icon toggles .open
+    if (e.offsetX > nav.clientWidth - 50 && e.offsetY < 50) {
+      nav.classList.toggle('open');
+    }
+  });
+
 });
