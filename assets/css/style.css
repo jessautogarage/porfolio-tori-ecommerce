@@ -19,7 +19,7 @@
 
  /* === Hero wrapper === */
  .hero-bg {
-   background-image: url('../img/Model1-min.jpg');
+   background-image: url('porfolio-tori-ecommerce/assets/img/Model1-min.jpg');
    background-size: cover;
    background-position: center;
    min-height: 100vh;
