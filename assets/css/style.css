@@ -401,6 +401,12 @@
 
 /* ==== TABLET (≤992px) ==== */
 @media (max-width: 992px) {
+  .hero-bg {
+    /* a shorter hero so content isn’t pushed too far down */
+    min-height: 75vh;
+    /* favor showing the top of the image on narrower widths */
+    background-position: center top;
+  }
   /* NAV: center links, shrink gaps */
   .hero-bg .nav {
     justify-content: center;
@@ -444,7 +450,12 @@
 
 /* ==== MOBILE (≤576px) ==== */
 @media (max-width: 576px) {
-  /* NAV: hamburger only (if you have one), else wrap items */
+  .hero-bg {
+    /* make the hero even more compact on phones */
+    min-height: 60vh;
+    /* shift focal point slightly to bring your face/subject higher */
+    background-position: center 25%;
+  }
   .hero-bg .nav {
     flex-direction: column;
     text-align: center;
